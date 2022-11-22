@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Pocket Mechanic App
+## Boca Code Final Project, Created By Tyler Jefferson
+
+This application allows the user to create and store their vehicle information and track the last time maintenance items were completed.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
