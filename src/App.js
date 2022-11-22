@@ -1,12 +1,54 @@
-import './App.css';
+import { Box, Grommet, Heading, Menu } from "grommet";
+import AddVehicleForm from "./components/AddVehicleForm"
+
+const theme = {
+  global: {
+    colors: {
+      brand: "#9c89ff"
+    },
+    font: {
+      family: "Roboto",
+      size: "18px",
+      height: "20px"
+    },
+  },
+};
+
+const AppBar = (props) => (
+  <Box
+    tag="header"
+    direction="row"
+    align="center"
+    justify="between"
+    background="brand"
+    pad={{ left: "medium", right: "small", vertical: "small" }}
+    elevation="medium"
+    style={{ zIndex: "1" }}
+    {...props}
+  />
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Final Project</h1>
-      </header>
-    </div>
+    <Grommet theme={theme} full>
+      <Box fill>
+        <AppBar>
+          <Heading level="3" margin="none">My App</Heading>
+          <Menu
+            label="Menu"
+            items={[
+              { label: 'Add New Vehicle', onClick: () => {} },
+              { label: 'Log Out', onClick: () => {} },
+            ]}
+          />
+        </AppBar>
+        <Box direction="row" flex overflow={{ horizontal: "hidden" }}>
+          <Box flex align="center" justify="center">
+            <AddVehicleForm />
+          </Box>     
+        </Box>
+      </Box>
+    </Grommet>
   );
 }
 
