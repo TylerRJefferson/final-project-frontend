@@ -4,29 +4,73 @@ import { useState } from "react";
 
 export default function AddVehicleForm() {
   const [value, setValue] = useState({});
+  const [filebase64,setFileBase64] = useState("")
+
+  function formSubmit(e) {
+    e.preventDefault();
+    // Submit your form with the filebase64 as one of your fields
+    value.filebase64 = filebase64
+    console.log(value)
+    let newVehicleObj = value
+    // TO DO: send post to create vehicle endpoint, then nav to card component for new vehicle
+    fetch("http://localhost:4040", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newVehicleObj)
+    })
+      .then(results => results.json())
+      .then((data)=> {
+        let vehicleId = data.insertedId
+        // to do: either pass vehicleID to new card
+        // or pass values to new card
+        // to do: navigate to card
+      })
+      .catch(alert)
+  }
+
+  // The Magic all happens here.
+  function convertFile(files) {
+    if (files) {
+      const fileRef = files[0] || ""
+      const fileType = fileRef.type || ""
+      if (fileType) {
+
+        console.log("This file upload is of type:",fileType)
+        const reader = new FileReader()
+        reader.readAsBinaryString(fileRef)
+        reader.onload=(ev) => {
+          // convert it to base64
+          setFileBase64(`data:${fileType};base64,${btoa(ev.target.result)}`)
+        }
+      }
+      else {
+        setFileBase64("")
+      }
+    }
+  }
+
   return (
     <Form
       value={value}
       onChange={nextValue => setValue(nextValue)}
-      onReset={() => setValue({})}
-      onSubmit={({ value }) => {}}
+      onReset={() => setValue({}, setFileBase64(""))}
+      onSubmit={formSubmit}
     >
-      <FileInput
-        name="file"
-        onChange={event => {
-          const fileList = event.target.files;
-          for (let i = 0; i < fileList.length; i += 1) {
-          const file = fileList[i];
+      {(filebase64.indexOf("image/") > -1) && 
+            <img src={filebase64} width={300} alt="User vehicle" />
           }
-        }}
+      <FileInput
+        required
+        name="file"
+        onChange={(e)=> convertFile(e.target.files)}
       />
-      <FormField name="year" htmlFor="text-input-id" label="Year">
+      <FormField required name="year" htmlFor="text-input-id" label="Year">
         <TextInput id="text-input-id" name="year" />
       </FormField>
-      <FormField name="make" htmlFor="text-input-id" label="Make">
+      <FormField required name="make" htmlFor="text-input-id" label="Make">
         <TextInput id="text-input-id" name="make" />
       </FormField>
-      <FormField name="model" htmlFor="text-input-id" label="Model">
+      <FormField required name="model" htmlFor="text-input-id" label="Model">
         <TextInput id="text-input-id" name="model" />
       </FormField>
       <Box direction="row" gap="medium">

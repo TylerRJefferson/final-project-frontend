@@ -1,3 +1,4 @@
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box, Grommet, Heading, Menu } from "grommet";
 import AddVehicleForm from "./components/AddVehicleForm"
 
@@ -33,7 +34,7 @@ function App() {
     <Grommet theme={theme} full>
       <Box fill>
         <AppBar>
-          <Heading level="3" margin="none">My App</Heading>
+          <Heading level="3" margin="none">Pocket Mechanic</Heading>
           <Menu
             label="Menu"
             items={[
