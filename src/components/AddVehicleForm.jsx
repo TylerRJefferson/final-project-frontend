@@ -1,10 +1,14 @@
-import { Box, Button, FileInput, Form, FormField, TextInput } from "grommet";
+import { Button, Card, CardBody, CardFooter, 
+  FileInput, Form, FormField, TextInput } from "grommet";
 import { useState } from "react";
 
 
+//Need to make img preview size restricted
+//so that form doesnt get cut off
+
 export default function AddVehicleForm() {
   const [value, setValue] = useState({});
-  const [filebase64,setFileBase64] = useState("")
+  const [filebase64, setFileBase64] = useState("")
 
   function formSubmit(e) {
     e.preventDefault();
@@ -19,7 +23,7 @@ export default function AddVehicleForm() {
       body: JSON.stringify(newVehicleObj)
     })
       .then(results => results.json())
-      .then((data)=> {
+      .then((data) => {
         let vehicleId = data.insertedId
         // to do: either pass vehicleID to new card
         // or pass values to new card
@@ -28,17 +32,16 @@ export default function AddVehicleForm() {
       .catch(alert)
   }
 
-  // The Magic all happens here.
   function convertFile(files) {
     if (files) {
       const fileRef = files[0] || ""
       const fileType = fileRef.type || ""
       if (fileType) {
 
-        console.log("This file upload is of type:",fileType)
+        console.log("This file upload is of type:", fileType)
         const reader = new FileReader()
         reader.readAsBinaryString(fileRef)
-        reader.onload=(ev) => {
+        reader.onload = (ev) => {
           // convert it to base64
           setFileBase64(`data:${fileType};base64,${btoa(ev.target.result)}`)
         }
@@ -50,33 +53,37 @@ export default function AddVehicleForm() {
   }
 
   return (
-    <Form
-      value={value}
-      onChange={nextValue => setValue(nextValue)}
-      onReset={() => setValue({}, setFileBase64(""))}
-      onSubmit={formSubmit}
-    >
-      {(filebase64.indexOf("image/") > -1) && 
+    <Card background="light-2">
+      <CardBody pad="medium">
+        <Form
+          value={value}
+          onChange={nextValue => setValue(nextValue)}
+          onReset={() => setValue({}, setFileBase64(""))}
+          onSubmit={formSubmit}
+        >
+          {(filebase64.indexOf("image/") > -1) &&
             <img src={filebase64} width={300} alt="User vehicle" />
           }
-      <FileInput
-        required
-        name="file"
-        onChange={(e)=> convertFile(e.target.files)}
-      />
-      <FormField required name="year" htmlFor="text-input-id" label="Year">
-        <TextInput id="text-input-id" name="year" />
-      </FormField>
-      <FormField required name="make" htmlFor="text-input-id" label="Make">
-        <TextInput id="text-input-id" name="make" />
-      </FormField>
-      <FormField required name="model" htmlFor="text-input-id" label="Model">
-        <TextInput id="text-input-id" name="model" />
-      </FormField>
-      <Box direction="row" gap="medium">
-        <Button type="submit" primary label="Submit" />
-        <Button type="reset" label="Reset" />
-      </Box>
-    </Form>
+          <FileInput
+            required
+            name="file"
+            onChange={(e) => convertFile(e.target.files)}
+          />
+          <FormField required name="year" htmlFor="text-input-id" label="Year">
+            <TextInput id="text-input-id" name="year" />
+          </FormField>
+          <FormField required name="make" htmlFor="text-input-id" label="Make">
+            <TextInput id="text-input-id" name="make" />
+          </FormField>
+          <FormField required name="model" htmlFor="text-input-id" label="Model">
+            <TextInput id="text-input-id" name="model" />
+          </FormField>
+          <CardFooter direction="row" gap="medium" alignSelf="center" >
+            <Button type="submit" primary label="Submit" />
+            <Button type="reset" label="Reset" />
+          </CardFooter>
+        </Form>
+      </CardBody>
+    </Card>
   );
 }

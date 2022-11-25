@@ -36,11 +36,13 @@ function App() {
         <AppBar>
           <Heading level="3" margin="none">Pocket Mechanic</Heading>
           <Menu
-            label="Menu"
-            items={[
-              { label: 'Add New Vehicle', onClick: () => {} },
-              { label: 'Log Out', onClick: () => {} },
-            ]}
+            label="Menu" 
+            dropBackground="light-2"
+              items={[
+                { label: 'Add New Vehicle', onClick: () => {} },
+                { label: 'My Garage', onClick: () => {} },
+                { label: 'Log Out', onClick: () => {} },
+              ]}
           />
         </AppBar>
         <Box direction="row" flex overflow={{ horizontal: "hidden" }}>
