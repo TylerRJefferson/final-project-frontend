@@ -1,5 +1,6 @@
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box, Grommet, Heading, Menu } from "grommet";
+import { BladesVertical } from "grommet-icons";
 import AddVehicleForm from "./components/AddVehicleForm"
 
 const theme = {
@@ -22,7 +23,7 @@ const AppBar = (props) => (
     align="center"
     justify="between"
     background="brand"
-    pad={{ left: "medium", right: "small", vertical: "small" }}
+    pad={{ left: "medium", right: "medium", vertical: "small" }}
     elevation="medium"
     style={{ zIndex: "1" }}
     {...props}
@@ -34,9 +35,9 @@ function App() {
     <Grommet theme={theme} full>
       <Box fill>
         <AppBar>
-          <Heading level="3" margin="none">Pocket Mechanic</Heading>
+          <Heading level="2" margin="none" color="black">Pocket Mechanic</Heading>
           <Menu
-            label="Menu" 
+            icon={<BladesVertical color="black"/>}
             dropBackground="light-2"
               items={[
                 { label: 'Add New Vehicle', onClick: () => {} },

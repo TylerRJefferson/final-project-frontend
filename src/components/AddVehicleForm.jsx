@@ -2,10 +2,6 @@ import { Button, Card, CardBody, CardFooter,
   FileInput, Form, FormField, TextInput } from "grommet";
 import { useState } from "react";
 
-
-//Need to make img preview size restricted
-//so that form doesnt get cut off
-
 export default function AddVehicleForm() {
   const [value, setValue] = useState({});
   const [filebase64, setFileBase64] = useState("")
@@ -62,7 +58,16 @@ export default function AddVehicleForm() {
           onSubmit={formSubmit}
         >
           {(filebase64.indexOf("image/") > -1) &&
-            <img src={filebase64} width={300} alt="User vehicle" />
+            <div style={{
+              width: 250, 
+              height: 140, 
+              backgroundImage:`url(${filebase64})`, 
+              backgroundPosition: "center center", 
+              backgroundRepeat: "no-repeat", 
+              backgroundSize: "contain",
+              marginBottom:10
+            }} 
+            />
           }
           <FileInput
             required
