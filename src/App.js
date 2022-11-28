@@ -42,7 +42,7 @@ function App() {
               items={[
                 { label: 'Add New Vehicle', onClick: () => {} },
                 { label: 'My Garage', onClick: () => {} },
-                { label: 'Log Out', onClick: () => {} },
+                // { label: 'Log Out', onClick: () => {} },
               ]}
           />
         </AppBar>
