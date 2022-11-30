@@ -12,7 +12,7 @@ export default function AddVehicleForm() {
     value.filebase64 = filebase64
     console.log(value)
     let newVehicleObj = value
-    fetch("http://localhost:4040", {
+    fetch(process.env.REACT_APP_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newVehicleObj)
@@ -21,7 +21,7 @@ export default function AddVehicleForm() {
       // .then((data) => {
       //   let vehicleId = data.insertedId
       //   // to do: either pass vehicleID to new card
-      //   // or pass values to new card
+      //   // or pass values to new card ***
       //   // to do: navigate to card
       // })
       .catch(alert)
