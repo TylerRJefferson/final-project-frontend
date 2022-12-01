@@ -1,10 +1,12 @@
 import { Button, Card, CardBody, CardFooter, 
   FileInput, Form, FormField, TextInput } from "grommet";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddVehicleForm() {
   const [value, setValue] = useState({});
-  const [filebase64, setFileBase64] = useState("")
+  const [filebase64, setFileBase64] = useState("");
+  const navigate = useNavigate();
 
   function formSubmit(e) {
     e.preventDefault();
@@ -17,13 +19,7 @@ export default function AddVehicleForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newVehicleObj)
     })
-      .then(results => results.json())
-      // .then((data) => {
-      //   let vehicleId = data.insertedId
-      //   // to do: either pass vehicleID to new card
-      //   // or pass values to new card ***
-      //   // to do: navigate to card
-      // })
+      .then(() => navigate("/"))
       .catch(alert)
   }
 

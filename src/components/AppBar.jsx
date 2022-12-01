@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Box, Heading, Menu } from "grommet";
 import { Menu as MenuIcon } from "grommet-icons";
 
@@ -16,6 +17,7 @@ const MenuBar = (props) => (
 );
 
 export default function AppBar() {
+  const navigate = useNavigate()
   return (
   <MenuBar>
     <Heading level="2" margin="none" color="black">Pocket Mechanic</Heading>
@@ -23,8 +25,8 @@ export default function AppBar() {
       icon={<MenuIcon color="black" />}
       dropBackground="light-2"
       items={[
-        { label: 'Add New Vehicle', onClick: () => { } },
-        { label: 'My Garage', onClick: () => { } },
+        { label: 'Add New Vehicle', onClick: () => {navigate('/add') } },
+        { label: 'My Garage', onClick: () => {navigate('/') } },
         // { label: 'Log Out', onClick: () => {} },
       ]}
     />
