@@ -13,9 +13,10 @@ export default function VehicleCard({ thisVehicle }) {
         margin:10
         }} 
       />
-      <CardBody>
-        <h2>{thisVehicle.year}</h2>
-        <h3>{thisVehicle.make} {thisVehicle.model}</h3>
+      <CardBody style={{marginLeft:18}} className="vehicle-info">
+        <h2>{thisVehicle.make} {thisVehicle.model}</h2>
+        <h3>{thisVehicle.year}</h3>
+        <p>{thisVehicle.oil_specs}</p>
       </CardBody>
     </Card>
   )

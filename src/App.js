@@ -24,7 +24,7 @@ function App() {
       <Box fill>
         <AppBar />
         <Box direction="row" flex overflow={{ horizontal: "hidden" }}>
-          <Box flex align="center" justify="center">
+          <Box background="url(https://images.unsplash.com/photo-1510414148252-a2c44206f94b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)" flex align="center" justify="center">
             <Routes>
               <Route path="/add" element={<AddVehicleForm />} />
               <Route path="/" element={<VehicleList />} />

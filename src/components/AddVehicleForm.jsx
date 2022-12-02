@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function AddVehicleForm() {
-  const [value, setValue] = useState({});
+  const [value, setValue] = useState({year:"",make:"",model:"",oil_specs:""});
   const [filebase64, setFileBase64] = useState("");
   const navigate = useNavigate();
 
@@ -49,7 +49,7 @@ export default function AddVehicleForm() {
         <Form
           value={value}
           onChange={nextValue => setValue(nextValue)}
-          onReset={() => setValue({}, setFileBase64(""))}
+          onReset={() => setValue({year:"",make:"",model:"",oil_specs:""}, setFileBase64(""))}
           onSubmit={formSubmit}
         >
           {(filebase64.indexOf("image/") > -1) &&
@@ -66,17 +66,21 @@ export default function AddVehicleForm() {
           }
           <FileInput
             required
+            messages={{dropPrompt: "Add Vehicle Photo *"}}
             name="file"
             onChange={(e) => convertFile(e.target.files)}
           />
-          <FormField required name="year" htmlFor="text-input-id" label="Year">
+          <FormField required name="year" htmlFor="text-input-id" label="Year *">
             <TextInput id="text-input-id" name="year" />
           </FormField>
-          <FormField required name="make" htmlFor="text-input-id" label="Make">
+          <FormField required name="make" htmlFor="text-input-id" label="Make *">
             <TextInput id="text-input-id" name="make" />
           </FormField>
-          <FormField required name="model" htmlFor="text-input-id" label="Model">
+          <FormField required name="model" htmlFor="text-input-id" label="Model *">
             <TextInput id="text-input-id" name="model" />
+          </FormField>
+          <FormField name="oil_specs" htmlFor="text-input-id" label="Oil / Filter Specs">
+            <TextInput id="text-input-id" name="oil_specs" />
           </FormField>
           <CardFooter direction="row" gap="medium" alignSelf="center" >
             <Button type="submit" primary label="Submit" />
