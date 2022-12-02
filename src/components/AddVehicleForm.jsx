@@ -49,7 +49,10 @@ export default function AddVehicleForm() {
         <Form
           value={value}
           onChange={nextValue => setValue(nextValue)}
-          onReset={() => setValue({year:"",make:"",model:"",oil_specs:""}, setFileBase64(""))}
+          onReset={() => setValue(
+            {year:"",make:"",model:"",oil_specs:""},
+            setFileBase64("")
+          )}
           onSubmit={formSubmit}
         >
           {(filebase64.indexOf("image/") > -1) &&
