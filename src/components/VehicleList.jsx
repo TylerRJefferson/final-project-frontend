@@ -1,3 +1,4 @@
+import { Spinner } from "grommet";
 import { useState, useEffect } from "react";
 import VehicleCard from "./VehicleCard";
 
@@ -12,7 +13,7 @@ export default function VehicleList() {
   return (
     <section className="vehicle-list">
       {!vehicles
-        ? <h1>Loading Garage...</h1>
+        ? <Spinner size="xlarge" color="#9c89ff"/>
         : vehicles.map(thisVehicle => <VehicleCard key={thisVehicle._id} thisVehicle={thisVehicle} />)
         }
     </section>
