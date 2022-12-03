@@ -12,7 +12,7 @@ export default function VehicleList() {
   return (
     <section className="vehicle-list">
       {!vehicles
-        ? <p>Loading Garage...</p>
+        ? <h1>Loading Garage...</h1>
         : vehicles.map(thisVehicle => <VehicleCard key={thisVehicle._id} thisVehicle={thisVehicle} />)
         }
     </section>
