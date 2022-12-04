@@ -23,7 +23,7 @@ export default function AppBar() {
       <Heading level="2" margin="none" color="black">Pocket Mechanic</Heading>
       <Menu
         icon={<MenuIcon color="black" />}
-        dropBackground="light-2"
+        dropBackground="light-4"
         items={[
           { label: 'Add New Vehicle', onClick: () => navigate('/add') },
           { label: 'My Garage', onClick: () => navigate('/') },

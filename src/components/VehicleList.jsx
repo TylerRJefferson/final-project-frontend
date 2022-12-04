@@ -14,7 +14,8 @@ export default function VehicleList() {
     <section className="vehicle-list">
       {!vehicles
         ? <Spinner size="xlarge" color="#9c89ff"/>
-        : vehicles.map(thisVehicle => <VehicleCard key={thisVehicle._id} thisVehicle={thisVehicle} />)
+        : vehicles.map(thisVehicle => 
+          <VehicleCard key={thisVehicle._id} thisVehicle={thisVehicle} />)
         }
     </section>
   )

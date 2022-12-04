@@ -44,7 +44,7 @@ export default function AddVehicleForm() {
   }
 
   return (
-    <Card background="light-2">
+    <Card background="light-4">
       <CardBody pad="medium">
         <Form
           value={value}
