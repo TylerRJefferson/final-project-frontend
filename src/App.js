@@ -3,7 +3,7 @@ import { Box, Grommet } from "grommet";
 import AppBar from "./components/AppBar";
 import AddVehicleForm from "./components/AddVehicleForm";
 import VehicleList from "./components/VehicleList";
-//import MaintenanceLog from "./components/MaintenanceLog"
+import MaintenanceLog from "./components/MaintenanceLog"
 
 const theme = {
   global: {
@@ -30,7 +30,7 @@ function App() {
             <Routes>
               <Route path="/" element={<VehicleList />} />
               <Route path="/add" element={<AddVehicleForm />} />
-              {/* <Route path="/logs" element={<MaintenanceLog/>} /> */}
+              <Route path="/logs" element={<MaintenanceLog/>} />
             </Routes>
           </Box>
         </Box>
