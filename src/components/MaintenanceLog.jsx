@@ -7,7 +7,7 @@ export default function MaintenanceLog() {
   const [value, setValue] = useState({maint_type:"", maint_date:"", maint_miles:""});
   const navigate = useNavigate();
   return (
-    <Layer responsive={false} modal={true} animation="slide" background="light-4"
+    <Layer responsive={false} modal={true} animation="slide" background="light-3"
       onClickOutside={() => navigate("/")} onEsc={() => navigate("/")}>
       <Form value={value} onChange={nextValue => setValue(nextValue)}>
         <CardBody pad="small">
@@ -16,8 +16,10 @@ export default function MaintenanceLog() {
           </FormField>
           <FormField label="Date Completed *" name="maint_date">
             <DateInput name="maint_date" format="mm/dd/yyyy"
-              value={(new Date()).toISOString()}
-              onChange={({ value }) => {}}
+              calendarProps={{margin:{right:"small", left:"small", top:"xsmall", bottom:"xsmall"},
+                size:"medium", alignSelf:"center", fill:true, daysOfWeek:true, showAdjacentDays:"trim"}}
+              // value={(new Date()).toISOString()}
+              // onChange={({ value }) => {}}
             />
           </FormField>
           <FormField label="Mileage When Completed" name="maint_miles" htmlFor="text-input-id">
