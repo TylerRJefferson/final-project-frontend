@@ -8,7 +8,7 @@ export default function MaintenanceLog() {
   const navigate = useNavigate();
   return (
     <Layer responsive={false} modal={true} animation="slide" background="light-3"
-      onClickOutside={() => navigate("/")} onEsc={() => navigate("/")}>
+      onEsc={() => navigate("/")}>
       <Form value={value} onChange={nextValue => setValue(nextValue)}>
         <CardBody pad="small">
           <FormField required label="Maintenance Completed *" name="maint_type" htmlFor="text-input-id">

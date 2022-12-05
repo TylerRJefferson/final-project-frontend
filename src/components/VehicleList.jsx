@@ -11,7 +11,7 @@ export default function VehicleList() {
       .catch(alert)
   }, [])
   return (
-    <section className="vehicle-list">
+    <section style={{margin:'auto'}} className="vehicle-list">
       {!vehicles
         ? <Spinner size="xlarge" color="#9c89ff"/>
         : vehicles.map(thisVehicle => 
