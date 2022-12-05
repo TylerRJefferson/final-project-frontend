@@ -18,7 +18,6 @@ const theme = {
 
 
 export default function VehicleCard({ thisVehicle }) {
-  thisVehicle.maint_date = (new Date(thisVehicle.maint_date)).toDateString()
   const [flip, setFlip] = useState(false);
   const navigate = useNavigate();
   return (
@@ -53,8 +52,14 @@ export default function VehicleCard({ thisVehicle }) {
         <Box margin="10px 0px 10px 0px">
           <Card pad="medium" background="light-4">
             <CardBody pad="small">
-              <h3>{thisVehicle.maint_type}</h3>
-              <p>{thisVehicle.maint_date} - {thisVehicle.maint_miles}</p>
+              {thisVehicle.logs.map((log) => {
+                return (
+                  <>
+                  <h3>{log.maint_type}</h3>
+                  <p>{(new Date(log.maint_date)).toDateString()} - {log.maint_miles}</p>
+                  </>
+                  )
+              })}
             </CardBody>
             <CardFooter>
               <Button secondary size="small" label="Log Maintenance"

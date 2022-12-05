@@ -12,6 +12,7 @@ export default function AddVehicleForm() {
     e.preventDefault();
     // Submit your form with the filebase64 as one of your fields
     value.filebase64 = filebase64
+    value.logs = []
     console.log(value)
     let newVehicleObj = value
     fetch(process.env.REACT_APP_ENDPOINT, {
