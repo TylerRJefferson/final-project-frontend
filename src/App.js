@@ -30,7 +30,7 @@ function App() {
             <Routes>
               <Route path="/" element={<VehicleList />} />
               <Route path="/add" element={<AddVehicleForm />} />
-              <Route path="/logs" element={<MaintenanceLog/>} />
+              <Route path="/logs/:vehicle_id" element={<MaintenanceLog/>} />
             </Routes>
           </Box>
         </Box>

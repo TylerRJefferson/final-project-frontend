@@ -18,13 +18,14 @@ const theme = {
 
 
 export default function VehicleCard({ thisVehicle }) {
+  thisVehicle.maint_date = (new Date(thisVehicle.maint_date)).toDateString()
   const [flip, setFlip] = useState(false);
   const navigate = useNavigate();
   return (
     <Grommet theme={theme}>
       <ReactCardFlip isFlipped={flip}
         flipDirection="horizontal">
-        <Box margin="10px 0px 0px 0px">
+        <Box margin="10px 0px 10px 0px">
           <Card pad="medium" background="light-4">
             <div style={{
               height: 250,
@@ -42,7 +43,7 @@ export default function VehicleCard({ thisVehicle }) {
             </CardBody>
             <CardFooter>
               <Button secondary size="small" label="Log Maintenance"
-                onClick={() => navigate("/logs")} />
+                onClick={() => navigate(`/logs/${thisVehicle._id}`)} />
               <Button secondary size="small" label="Show Logs"
                 onClick={() => setFlip(!flip)} />
             </CardFooter>
@@ -52,20 +53,12 @@ export default function VehicleCard({ thisVehicle }) {
         <Box margin="10px 0px 10px 0px">
           <Card pad="medium" background="light-4">
             <CardBody pad="small">
-              <h2>Logs go here...</h2>
-              <p>Examples...</p>
-              {/* {thisVehicle.maint_type} */}
-              <p>Oil Changed</p>
-              {/* {thisVehicle.maint_date} - {thisVehicle.maint_miles} */}
-              <p>10/22/2022 - 90,782 miles</p>
-              <p>Transmission Fluid Changed</p>
-              <p>10/22/2022 - 90,782 miles</p>
-              <p>Brake Pads and Rotors Changed</p>
-              <p>05/17/2022 - 81,493 miles</p>
+              <h3>{thisVehicle.maint_type}</h3>
+              <p>{thisVehicle.maint_date} - {thisVehicle.maint_miles}</p>
             </CardBody>
             <CardFooter>
               <Button secondary size="small" label="Log Maintenance"
-                onClick={() => navigate("/logs")} />
+                onClick={() => navigate(`/logs/${thisVehicle._id}`)} />
               <Button secondary size="small" label="Show Vehicle"
                 onClick={() => setFlip(!flip)} />
             </CardFooter>
