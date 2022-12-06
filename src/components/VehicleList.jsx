@@ -1,6 +1,7 @@
 import { Spinner } from "grommet";
 import { useState, useEffect } from "react";
 import VehicleCard from "./VehicleCard";
+import "../assets/styles.css"
 
 export default function VehicleList() {
   const [vehicles, setVehicles] = useState()
@@ -11,7 +12,7 @@ export default function VehicleList() {
       .catch(alert)
   }, [])
   return (
-    <section style={{margin:'auto'}} className="vehicle-list">
+    <section className="vehicle-list">
       {!vehicles
         ? <Spinner size="xlarge" color="#9c89ff"/>
         : vehicles.map(thisVehicle => 

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Grommet } from "grommet";
 import ReactCardFlip from "react-card-flip";
 import { useState } from "react";
+import "../assets/styles.css"
 
 const theme = {
   global: {
@@ -22,6 +23,7 @@ export default function VehicleCard({ thisVehicle }) {
   const navigate = useNavigate();
   return (
     <Grommet theme={theme}>
+      <div className="card-container">
       <ReactCardFlip isFlipped={flip}
         flipDirection="horizontal">
         <Box margin="10px 0px 10px 0px">
@@ -70,6 +72,7 @@ export default function VehicleCard({ thisVehicle }) {
           </Card>
         </Box>
       </ReactCardFlip>
+      </div>
     </Grommet>
   )
 }

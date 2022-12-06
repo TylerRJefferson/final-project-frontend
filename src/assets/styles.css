@@ -6,3 +6,16 @@ background-size: fill;
 height: 100%;
 width: 100%;
 }
+
+.card-container {
+  margin: 10px;
+}
+
+.vehicle-list{
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
