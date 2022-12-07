@@ -34,7 +34,6 @@ export default function MaintenanceLog() {
               calendarProps={{margin:{right:"small", left:"small", top:"xsmall", bottom:"xsmall"},
                 size:"medium", alignSelf:"center", fill:true, daysOfWeek:true, showAdjacentDays:"trim"}}
                 value={value.maint_date}
-              // onChange={({ value }) => {}}
             />
           </FormField>
           <FormField label="Mileage When Completed" name="maint_miles" htmlFor="text-input-id">
