@@ -17,10 +17,23 @@ const theme = {
   },
 };
 
-
-export default function VehicleCard({ thisVehicle }) {
+export default function VehicleCard({ thisVehicle, setVehicles }) {
   const [flip, setFlip] = useState(false);
   const navigate = useNavigate();
+
+  function handleDelete() {
+    
+    fetch(`${process.env.REACT_APP_ENDPOINT}/${thisVehicle._id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.json())
+    .then((data) => {
+      setVehicles(data)
+      navigate("/")})
+    .catch(alert)
+  }
+
   return (
     <Grommet theme={theme}>
       <div className="card-container">
@@ -69,10 +82,14 @@ export default function VehicleCard({ thisVehicle }) {
                   )
               })}
             </CardBody>
+            <CardFooter justify="center">
+              <Button size="xsmall" label="Delete Vehicle" color="red" 
+                onClick={() => handleDelete()}/>
+            </CardFooter>
           </Card>
         </Box>
       </ReactCardFlip>
       </div>
     </Grommet>
   )
-}
+};
